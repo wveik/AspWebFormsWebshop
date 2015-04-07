@@ -12,11 +12,16 @@ using Entity = AspWebFormsWebshop.Repository.Entites;
 namespace AspWebFormsWebshop.Pages {
     public partial class Coffee : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-
+            FillPage();
         }
 
         private void FillPage() {
-            var list = ConnectionClass.GetCoffeeByType(_DropDownListType.SelectedValue);
+            var type = "%";
+            if (IsPostBack) {
+                type = _DropDownListType.SelectedValue;
+            }
+
+            var list = ConnectionClass.GetCoffeeByType(type);
             StringBuilder sb = new StringBuilder();
 
             foreach (var coffee in list) {

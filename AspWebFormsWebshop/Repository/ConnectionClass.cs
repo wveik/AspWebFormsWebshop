@@ -61,5 +61,29 @@ namespace AspWebFormsWebshop.Repository {
 
             return result;
         }
+
+        internal static void AddCoffee(Coffee coffee) {
+            string query = string.Format(
+            @"INSERT INTO coffee VALUES ('{0}', '{1}', @prices, '{2}', '{3}','{4}', '{5}')",
+            coffee.Name, 
+            coffee.Type, 
+            coffee.Roast, 
+            coffee.Country, 
+            coffee.Image, 
+            coffee.Review);
+
+            try {
+                using (var conn = new SqlConnection(_connectionString)) {
+                    using (var command = new SqlCommand(query, conn)) {
+                        command.Parameters.Add(new SqlParameter("@prices", coffee.Price));
+                        conn.Open();
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
