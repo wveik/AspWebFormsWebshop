@@ -85,5 +85,96 @@ namespace AspWebFormsWebshop.Repository {
                 Console.WriteLine(ex.Message);
             }
         }
+
+        #region Users
+        public static User LoginUser(string name, string password) {
+            //Check if user exists
+            string query =
+                string.Format("SELECT * FROM dbo.users WHERE name = '{0}' and password = '{1}' "
+                , name
+                , password);
+
+            User result = null;
+
+            try {
+                using (var conn = new SqlConnection(_connectionString)) {
+                    using (var command = new SqlCommand(query, conn)) {
+                        conn.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader()) {
+                            if (reader.HasRows) {
+                                while (reader.Read()) {
+                                    result = User.GetUser(reader);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+            return result;
+        }
+
+        public static User LoginUser(string name) {
+            //Check if user exists
+            string query =
+                string.Format("SELECT * FROM dbo.users WHERE name = '{0}' "
+                , name
+            );
+
+            User result = null;
+
+            try {
+                using (var conn = new SqlConnection(_connectionString)) {
+                    using (var command = new SqlCommand(query, conn)) {
+                        conn.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader()) {
+                            if (reader.HasRows) {
+                                while (reader.Read()) {
+                                    result = User.GetUser(reader);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+            return result;
+        }
+        
+        public static bool RegisterUser(User user) {
+            //Check if user exists
+
+            User result = LoginUser(user.Name);
+            if (result != null)
+                return false;
+
+            string query = string.Format(
+                "INSERT INTO users VALUES ('{0}', '{1}', '{2}', '{3}')", 
+                    user.Name, 
+                    user.Password,
+                    user.Email, 
+                    user.Type);
+
+            try {
+                using (var conn = new SqlConnection(_connectionString)) {
+                    using (var command = new SqlCommand(query, conn)) {
+                        conn.Open();
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            } catch (Exception ex) {
+                return false;
+            }
+
+            return true;
+        }
+        #endregion
     }
 }

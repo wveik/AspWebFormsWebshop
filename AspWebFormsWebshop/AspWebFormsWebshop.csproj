@@ -138,6 +138,9 @@
     <Content Include="MasterPageCMS.Master" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Pages\404\404.html" />
+    <Content Include="Pages\Account\Admin.aspx" />
+    <Content Include="Pages\Account\Login.aspx" />
+    <Content Include="Pages\Account\Registration.aspx" />
     <Content Include="Pages\Coffee.aspx" />
     <Content Include="Pages\Coffee_Add.aspx" />
     <Content Include="Pages\Coffee_Overview.aspx" />
@@ -163,6 +166,27 @@
     </Compile>
     <Compile Include="MasterPageCMS.Master.designer.cs">
       <DependentUpon>MasterPageCMS.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\Registration.aspx.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\Registration.aspx.designer.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Coffee_Add.aspx.cs">
       <DependentUpon>Coffee_Add.aspx</DependentUpon>
@@ -202,6 +226,7 @@
       <DependentUpon>Coffee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Entites\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="JavaScript\" />
