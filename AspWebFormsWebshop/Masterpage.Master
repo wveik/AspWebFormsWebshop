@@ -40,16 +40,15 @@
                     <li><a href="/">Главная</a></li>
                     <li><a href="#">Коффе</a>
                         <ul>
-                            <li><a href="/Pages/Coffee.aspx">Regular</a></li>
-                            <li><a href="#">Expresso</a></li>
-                            <li><a href="#">Latte</a></li>
+                            <li><a href="/Pages/Coffee.aspx">Список Коффе</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Магазин</a></li>
+                    <li><a href="/Pages/Shop.aspx">Магазин</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="/Pages/Coffee_Overview.aspx">Managment</a>
+                    <li><a href="#">Managment</a>
                          <ul>
                             <li><a href="/Pages/Account/Login.aspx">Войти</a></li>
+                            <li><a href="/Pages/Coffee_Overview.aspx">Список кофе</a></li>
                             <li><a href="/Pages/Account/Registration.aspx">Регистрация</a></li>
                             <li><a href="/Pages/Account/Admin.aspx">Список</a></li>
                         </ul>

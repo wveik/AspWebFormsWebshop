@@ -176,5 +176,86 @@ namespace AspWebFormsWebshop.Repository {
             return true;
         }
         #endregion
+
+        public static Coffee GetCoffeeById(int id) {
+
+            Coffee result = null;
+            string query = string.Format(@"
+                            SELECT 
+                                [id]
+                              ,[name]
+                              ,[type]
+                              ,[price]
+                              ,[roast]
+                              ,[country]
+                              ,[image]
+                              ,[review]
+                          FROM [dbo].[coffee]
+                            WHERE id =  '{0}'
+                        ", id);
+
+            try {
+                using (var conn = new SqlConnection(_connectionString)) {
+                    using (var command = new SqlCommand(query, conn)) {
+                        conn.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader()) {
+                            if (reader.HasRows) {
+                                while (reader.Read()) {
+
+                                    string name = reader["name"].ToString();
+                                    string type = reader["type"].ToString();
+                                    double price = double.Parse(reader["price"].ToString());
+                                    string roast = reader["roast"].ToString();
+                                    string country = reader["country"].ToString();
+                                    string image = reader["image"].ToString();
+                                    string review = reader["review"].ToString();
+
+                                    result = new Coffee(id, name, type, price, roast, country, image, review);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+
+            return result;        
+        }
+
+        public static void AddOrders(IList<Order> orders) {
+
+            string query = 
+                "INSERT INTO orders VALUES (@client, @product, @amount, @price, @date, @orderSent)";
+
+            try {
+                using (var conn = new SqlConnection(_connectionString)) {
+                    using (var command = new SqlCommand(query, conn)) {
+                        conn.Open();
+
+                        foreach (Order order in orders) {
+                            command.Parameters.Add(new SqlParameter("@client", order.Client));
+                            command.Parameters.Add(new SqlParameter("@product", order.Product));
+                            command.Parameters.Add(new SqlParameter("@amount", order.Amount));
+                            command.Parameters.Add(new SqlParameter("@price", order.Price));
+                            command.Parameters.Add(new SqlParameter("@date", order.Date));
+                            command.Parameters.Add(new SqlParameter("@orderSent", order.OrderShipped));
+
+                            //Execute query and clear parameters
+                            command.ExecuteNonQuery();
+                            command.Parameters.Clear();
+                        }
+
+                        //Execute query and clear parameters
+                        command.ExecuteNonQuery();
+                        command.Parameters.Clear();
+                    }
+                }
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

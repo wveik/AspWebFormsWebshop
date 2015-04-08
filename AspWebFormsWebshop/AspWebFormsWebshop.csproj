@@ -144,6 +144,7 @@
     <Content Include="Pages\Coffee.aspx" />
     <Content Include="Pages\Coffee_Add.aspx" />
     <Content Include="Pages\Coffee_Overview.aspx" />
+    <Content Include="Pages\Shop.aspx" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Styles\StyleSheet.css" />
@@ -202,7 +203,15 @@
     <Compile Include="Pages\Coffee_Overview.aspx.designer.cs">
       <DependentUpon>Coffee_Overview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Shop.aspx.cs">
+      <DependentUpon>Shop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Shop.aspx.designer.cs">
+      <DependentUpon>Shop.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Repository\ConnectionClass.cs" />
+    <Compile Include="Repository\ControlFinder.cs" />
     <Compile Include="Repository\Entites\Coffee.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -226,6 +235,7 @@
       <DependentUpon>Coffee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Entites\Order.cs" />
     <Compile Include="Repository\Entites\User.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,7 +3,7 @@
 
     <h3>Avaible Coffee:</h3>
     <p><a href="/Pages/Coffee_Add.aspx">Добавить новое коффе</a></p>
-    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" CellSpacing="4" DataKeyNames="id" DataSourceID="sds__coffee" ForeColor="Black" GridLines="Vertical" Width="750px">
+    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" CellSpacing="4" DataKeyNames="id" DataSourceID="sds__coffee" ForeColor="Black" GridLines="Vertical" Width="1054px">
     <AlternatingRowStyle BackColor="White" />
     <Columns>
         <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
